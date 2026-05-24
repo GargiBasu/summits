@@ -1,0 +1,1 @@
+Anders: awareness , sferical AI: 1252 GPUs, 158kw per racks, liquid cooling

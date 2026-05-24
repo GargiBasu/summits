@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Innovation Summit 2026 — Key Takeaways</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080c18;--bg2:#111827;--bg3:#1f2937;
+  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
+  --text:#f1f5f9;--text2:#94a3b8;
+  --green:#10b981;--orange:#f59e0b;--red:#ef4444;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);
+  font-family:'Segoe UI',system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+
+#progress{position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent3));
+  transition:width .4s ease;z-index:1000}
+#counter{position:fixed;bottom:20px;right:24px;font-size:13px;
+  color:var(--text2);z-index:1000;letter-spacing:.05em}
+.nav-btn{position:fixed;bottom:20px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);
+  color:var(--text);font-size:18px;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;transition:all .2s;z-index:1000}
+.nav-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+#btn-prev{left:20px}#btn-next{right:70px}
+
+#slides{width:100%;height:100%;position:relative}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:60px;opacity:0;transform:translateX(40px);
+  transition:opacity .4s ease,transform .4s ease;pointer-events:none;overflow:hidden}
+.slide.active{opacity:1;transform:translateX(0);pointer-events:all}
+.slide.prev{opacity:0;transform:translateX(-40px)}
+
+.slide.title-slide{background:radial-gradient(ellipse at 30% 50%,rgba(99,102,241,.2) 0%,transparent 60%),
+  radial-gradient(ellipse at 70% 50%,rgba(6,182,212,.1) 0%,transparent 60%),var(--bg);text-align:center}
+.slide.quote-slide{background:radial-gradient(ellipse at center,rgba(99,102,241,.15) 0%,var(--bg) 70%);text-align:center}
+.slide.two-col{flex-direction:row;align-items:stretch;padding:0;gap:0}
+.col-left,.col-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:50px}
+.col-right{background:var(--bg2);position:relative;overflow:hidden}
+
+.tag{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.15em;padding:4px 12px;border-radius:20px;margin-bottom:20px}
+.tag.day1{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+.tag.day2{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
+.tag.day3{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.3)}
+.tag.keynote{background:rgba(6,182,212,.15);color:#22d3ee;border:1px solid rgba(6,182,212,.3)}
+.tag.tkwy{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3)}
+
+h1.main-title{font-size:68px;font-weight:800;line-height:1.1;
+  background:linear-gradient(135deg,#fff 0%,#94a3b8 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+h2.slide-title{font-size:42px;font-weight:700;line-height:1.2;margin-bottom:24px;color:var(--text)}
+h3.company{font-size:32px;font-weight:700;margin-bottom:20px}
+.subtitle{font-size:20px;color:var(--text2);line-height:1.5}
+.lead{font-size:18px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.meta-date{font-size:15px;color:var(--text2);margin-top:10px}
+.watermark{position:absolute;top:18px;right:22px;font-size:11px;
+  color:rgba(255,255,255,.12);text-transform:uppercase;letter-spacing:.15em}
+
+ul.bullets{list-style:none;display:flex;flex-direction:column;gap:12px}
+ul.bullets li{display:flex;align-items:flex-start;gap:10px;font-size:17px;line-height:1.5;color:var(--text2)}
+ul.bullets li::before{content:'→';color:var(--accent3);font-size:15px;flex-shrink:0;margin-top:2px}
+ul.bullets li strong{color:var(--text);font-weight:600}
+
+.stats{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap}
+.stat-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;padding:18px 24px;text-align:center;flex:1;min-width:120px}
+.stat-number{font-size:40px;font-weight:800;
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.stat-label{font-size:12px;color:var(--text2);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+
+.img-frame{border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.img-frame img{width:100%;height:100%;object-fit:contain;display:block}
+.img-full{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+
+.card-grid{display:grid;gap:16px;width:100%}
+.card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:20px}
+.card h4{font-size:15px;font-weight:600;margin-bottom:6px}
+.card p{font-size:13px;color:var(--text2);line-height:1.5}
+.card .icon{font-size:24px;margin-bottom:10px}
+
+.pipeline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.pipeline-step{background:var(--bg2);border:1px solid rgba(99,102,241,.3);
+  border-radius:8px;padding:12px 16px;text-align:center;min-width:110px}
+.step-num{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.step-name{font-size:15px;font-weight:700;margin-top:3px}
+.step-desc{font-size:11px;color:var(--text2);margin-top:3px}
+.pipe-arrow{color:var(--accent3);font-size:20px;flex-shrink:0}
+
+blockquote.big-quote{font-size:38px;font-weight:700;line-height:1.3;max-width:820px}
+blockquote.big-quote span{color:var(--accent3)}
+.quote-attr{margin-top:20px;font-size:15px;color:var(--text2)}
+
+.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%;margin-top:24px}
+.day-card{background:var(--bg2);border-radius:14px;padding:24px;border-top:3px solid}
+.day-card.d1{border-color:#10b981}.day-card.d2{border-color:#818cf8}.day-card.d3{border-color:#fbbf24}
+.day-card h4{font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;font-weight:600}
+.day-card.d1 h4{color:#10b981}.day-card.d2 h4{color:#818cf8}.day-card.d3 h4{color:#fbbf24}
+.day-card p{font-size:14px;color:var(--text2);line-height:1.55}
+.day-card strong{color:var(--text)}
+
+.tkwy-list{display:flex;flex-direction:column;gap:12px;width:100%}
+.tkwy-item{display:flex;align-items:flex-start;gap:14px;background:var(--bg2);
+  border-radius:10px;padding:16px 20px;border-left:3px solid var(--accent)}
+.tkwy-num{font-size:20px;font-weight:800;color:var(--accent);flex-shrink:0;min-width:26px}
+.tkwy-content h4{font-size:16px;font-weight:600;margin-bottom:3px}
+.tkwy-content p{font-size:13px;color:var(--text2);line-height:1.45}
+
+.company-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  padding:5px 12px;border-radius:6px;margin-bottom:14px}
+.badge-google{background:rgba(66,133,244,.15);color:#60a5fa;border:1px solid rgba(66,133,244,.3)}
+.badge-meta{background:rgba(24,119,242,.15);color:#93c5fd;border:1px solid rgba(24,119,242,.3)}
+.badge-nvidia{background:rgba(118,185,0,.15);color:#86efac;border:1px solid rgba(118,185,0,.3)}
+.badge-spotify{background:rgba(30,215,96,.15);color:#4ade80;border:1px solid rgba(30,215,96,.3)}
+.badge-misc{background:rgba(168,85,247,.15);color:#c084fc;border:1px solid rgba(168,85,247,.3)}
+
+#notes-panel{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.92);
+  border-top:1px solid rgba(255,255,255,.1);padding:14px 24px;max-height:150px;
+  overflow-y:auto;transform:translateY(100%);transition:transform .3s;z-index:999}
+#notes-panel.visible{transform:translateY(0)}
+#notes-panel h5{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text2);margin-bottom:6px}
+#notes-panel p{font-size:13px;color:var(--text);line-height:1.5}
+#notes-toggle{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;
+  color:var(--text2);cursor:pointer;background:rgba(255,255,255,.05);padding:4px 12px;
+  border-radius:12px;border:1px solid rgba(255,255,255,.1);z-index:1001}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.slide.active .anim{animation:fadeUp .5s ease forwards;opacity:0}
+.slide.active .anim:nth-child(1){animation-delay:.05s}
+.slide.active .anim:nth-child(2){animation-delay:.15s}
+.slide.active .anim:nth-child(3){animation-delay:.25s}
+.slide.active .anim:nth-child(4){animation-delay:.35s}
+.slide.active .anim:nth-child(5){animation-delay:.45s}
+.slide.active .anim:nth-child(6){animation-delay:.55s}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<button class="nav-btn" id="btn-prev">&#8592;</button>
+<button class="nav-btn" id="btn-next">&#8594;</button>
+<button id="notes-toggle">Notes (N)</button>
+<div id="notes-panel"><h5>Speaker Notes</h5><p id="snotes"></p></div>
+
+<div id="slides">
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 1: TITLE -->
+<div class="slide title-slide active"
+  data-notes="Welcome. I attended the Data Innovation Summit in Stockholm, May 6–8. Over 3 days I covered sessions on data engineering, AI platforms, and agentic systems. Today I'll walk through the highlights and what they mean for our team.">
+  <div class="watermark">DIS 2026</div>
+  <div style="text-align:center;max-width:920px">
+    <div class="tag keynote anim">Data Innovation Summit 2026 · Stockholm, Sweden</div>
+    <h1 class="main-title anim">Key Takeaways</h1>
+    <p class="subtitle anim" style="max-width:580px;margin:0 auto 28px">
+      3 days · 9 parallel tracks · Sessions from Meta, Google,<br>NVIDIA, Spotify &amp; more
+    </p>
+    <p class="meta-date anim">May 6 – 8, 2026 &nbsp;·&nbsp; Presenting to: Data Engineers &amp; Managers</p>
+    <div class="stats anim" style="justify-content:center;margin-top:36px">
+      <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Days</span></div>
+      <div class="stat-card"><span class="stat-number">9+</span><span class="stat-label">Tracks</span></div>
+      <div class="stat-card"><span class="stat-number">5</span><span class="stat-label">Companies Deep-Dived</span></div>
+      <div class="stat-card"><span class="stat-number">1</span><span class="stat-label">Overarching Theme</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 2: SUMMIT OVERVIEW -->
+<div class="slide"
+  data-notes="Days 1 and 2 had parallel sessions in M1–M9 rooms. I focused on DE/DataOps (M2), Platform (M3), and AI/ML (M1). Day 3 switched to industry-specific tracks — I was in the Retail track (i3).">
+  <div class="watermark">DIS 2026</div>
+  <div style="width:100%;max-width:1000px">
+    <div class="tag keynote anim">The Summit at a Glance</div>
+    <h2 class="slide-title anim">3 Days. Multiple Tracks. One Theme.</h2>
+    <div class="day-grid anim">
+      <div class="day-card d1">
+        <h4>Day 1 · May 6</h4>
+        <p>Parallel tracks <strong>M1–M9</strong><br><br>
+        M1: AI &amp; ML<br>M2: DE &amp; DataOps<br>M3: Platform &amp; Architecture<br><br>
+        I attended: <strong>DE, Platform &amp; AI/ML</strong></p>
+      </div>
+      <div class="day-card d2">
+        <h4>Day 2 · May 7</h4>
+        <p>Parallel tracks <strong>M1–M9</strong> continue<br><br>
+        Keynote: Google Agentic Data Cloud<br>Sessions: Agentic readiness, Data quality, Knowledge fabrics<br><br>
+        I attended: <strong>Platform &amp; AI/ML</strong></p>
+      </div>
+      <div class="day-card d3">
+        <h4>Day 3 · May 8</h4>
+        <p>Industry tracks <strong>i1–i5</strong><br><br>
+        i1: Finance &amp; Telecom<br>i2: Manufacturing &amp; Energy<br>i3: <strong>Retail, E-Commerce &amp; Logistics</strong><br><br>
+        I attended: <strong>Retail track (i3)</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 3: THE BIG QUOTE -->
+<div class="slide quote-slide"
+  data-notes="This slide from the Day 1 keynote set the tone for everything that followed. Every session at the summit circled back to this idea: AI strategy requires a data strategy, and data strategy requires a business strategy. Without the business layer, the rest is theatre.">
+  <img src="src/misc/F13F4FAC-4BE5-4F57-8F73-FF95208806B4_4_5005_c.jpeg" class="img-full" alt="">
+  <div style="position:relative;z-index:2;text-align:center;padding:44px 52px;
+    background:rgba(8,12,24,.72);border-radius:18px;max-width:860px;
+    border:1px solid rgba(255,255,255,.08)">
+    <blockquote class="big-quote anim">
+      "There is <span>no AI strategy</span><br>without a data strategy"
+    </blockquote>
+    <p class="quote-attr anim">(But there is no need for either without a <strong>business strategy</strong>)</p>
+    <p class="quote-attr anim" style="margin-top:6px">— DIS 2026 Opening Keynote</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 4: NVIDIA - AI ACCELERATION -->
+<div class="slide two-col"
+  data-notes="NVIDIA's Day 1 closing keynote. AI capability is doubling every 7 months — faster than Moore's Law ever was. Data centers are evolving into token generators, or AI Factories. The AI infrastructure ecosystem is a 5-layer stack: Energy → Chips → Infrastructure → Models → Applications. Each layer is its own market.">
+  <div class="col-left">
+    <div class="company-badge badge-nvidia anim">NVIDIA · Day 1 Closing Keynote</div>
+    <h3 class="company anim">AI is Accelerating Faster Than You Think</h3>
+    <ul class="bullets anim">
+      <li>AI capability <strong>doubles every 7 months</strong> — faster than Moore's Law</li>
+      <li>Data centers are becoming <strong>AI Factories</strong> — token generators</li>
+      <li>AI Infrastructure is a <strong>5-layer ecosystem</strong>:<br>Energy → Chips → Infrastructure → Models → Applications</li>
+      <li>Use <strong>lightweight open-source models</strong> where frontier models aren't needed — save cost in tokens</li>
+      <li><strong>Agent-to-agent</strong> communication is the next frontier after post-training</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/nvidia/472CBD2C-1A53-4D46-A831-5F7262A25338_4_5005_c.jpeg" alt="AI Infrastructure 5-layer ecosystem">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 5: NVIDIA NEMOCLAW -->
+<div class="slide two-col"
+  data-notes="NemoClaw is NVIDIA's open reference architecture for building specialized AI agents. It integrates multi-modal prompts, memory, computer use tools, GPU access, sub-agents running OpenShell, and outputs through Nemotron / Nemo / Dynamo / NIM models. The key design principle: think in orchestration and agent composition, not single LLM calls.">
+  <div class="col-left">
+    <div class="company-badge badge-nvidia anim">NVIDIA · NemoClaw / OpenClaw</div>
+    <h3 class="company anim">Blueprint for Specialized AI Agents</h3>
+    <ul class="bullets anim">
+      <li><strong>NemoClaw</strong> = reference architecture for building specialized agentic systems</li>
+      <li>Integrates: <strong>memory, tools, sub-agents, multi-modal prompts</strong></li>
+      <li>Model outputs via <strong>Nemotron, Nemo, Dynamo, NIM</strong></li>
+      <li>Sub-agents communicate via <strong>OpenShell</strong></li>
+      <li>Key lesson: design for <strong>agent orchestration</strong>, not single model calls</li>
+    </ul>
+    <div style="margin-top:20px;padding:14px 18px;background:var(--bg2);
+      border-radius:8px;border-left:3px solid var(--green);font-size:14px;color:var(--text2)" class="anim">
+      Reference: <strong style="color:var(--text)">Check NemoClaw</strong> — open blueprint for enterprise agent systems
+    </div>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/nvidia/AFE9CFCE-3512-413A-AB77-9A7E22A2C441_4_5005_c.jpeg" alt="NVIDIA NemoClaw Architecture">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 6: SFERICAL AI -->
+<div class="slide two-col"
+  data-notes="A dialogue between Anders Ynnerman (Executive Chairman, Sferical AI) and Anders Arpteg (VP AI & Data, Saab Group). They discussed the physical reality of AI — the infrastructure constraints that are often ignored in AI hype. 1,252 GPUs. 158kW per rack. Liquid cooling is not optional at this scale. AI is not just a software problem.">
+  <div class="col-left">
+    <div class="company-badge badge-misc anim">Sferical AI · Future Outlook — Day 1</div>
+    <h3 class="company anim">The Physical Reality of AI</h3>
+    <p class="lead anim">Dialogue: <strong>Anders Ynnerman</strong> (Sferical AI) &amp; <strong>Anders Arpteg</strong> (Saab VP AI &amp; Data)</p>
+    <ul class="bullets anim">
+      <li>AI infrastructure requires <strong>massive physical investment</strong></li>
+      <li>Scale reality: <strong>1,252 GPUs · 158 kW per rack · liquid cooling</strong></li>
+      <li>AI is transforming from a software problem to an <strong>energy + infrastructure problem</strong></li>
+      <li>Awareness of physical constraints is key to <strong>realistic AI planning</strong></li>
+      <li>Not every company needs frontier-scale infra — <strong>right-size your compute</strong></li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Sferical%20AI/7DDFDCF4-3C45-415F-B08B-E70AF5C57F76_4_5005_c.jpeg" alt="Sferical AI Future Outlook">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 7: META - SCALE PROBLEM -->
+<div class="slide two-col"
+  data-notes="Meta's session was in the DE & DataOps track (M2). The scale problem they face is extreme: hundreds of distinct storage systems (MySQL, TAO, ADLS, Postgres, Kafka, etc.), millions of data assets, billions of columns. No shared schema language. Tickets don't scale. Manual data understanding is fundamentally broken. Their answer: Privacy Aware Infrastructure — an automated, continuous data understanding system.">
+  <div class="col-left">
+    <div class="company-badge badge-meta anim">Meta · DE &amp; DataOps Stage (M2)</div>
+    <h3 class="company anim">Understanding Data at Scale</h3>
+    <p class="lead anim">The Manual Data Understanding Trap</p>
+    <div class="stats anim" style="margin-top:4px">
+      <div class="stat-card">
+        <span class="stat-number" style="font-size:32px">100s</span>
+        <span class="stat-label">Distinct data<br>storage systems</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" style="font-size:32px">M+</span>
+        <span class="stat-label">Data assets<br>in scope</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" style="font-size:32px">B+</span>
+        <span class="stat-label">Columns<br>and fields</span>
+      </div>
+    </div>
+    <ul class="bullets anim" style="margin-top:20px">
+      <li>No shared schema language across systems</li>
+      <li>Tickets don't scale. <strong>Manual understanding fails at this level.</strong></li>
+      <li>Solution: <strong>Privacy Aware Infrastructure (PAI)</strong> — automated, continuous</li>
+      <li>Adopted a <strong>shift-left</strong> approach: privacy embedded early in dev lifecycle</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Meta/7C93E855-79E0-4026-ACFD-9439DCACEB58_4_5005_c.jpeg" alt="Meta Scale vs Manual Trap">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 8: META - SEMANTIC CI/CD -->
+<div class="slide two-col"
+  data-notes="Meta's mental model: treat data understanding as an automated, idempotent pipeline — exactly like CI/CD for code. Four stages: Enumerate (discover all assets, schemas), Schematize (project native schemas into one canonical dataSchema), Classify (heuristics like regex + ML classifiers), Use (apply privacy actions). This pipeline runs continuously. Each stage is monitored and automated.">
+  <div class="col-left">
+    <div class="company-badge badge-meta anim">Meta · The Mental Model</div>
+    <h3 class="company anim">Semantic CI/CD Pipeline</h3>
+    <p class="lead anim">Treat data understanding as an automated, idempotent pipeline</p>
+    <div class="pipeline anim">
+      <div class="pipeline-step">
+        <div class="step-num">Step 1</div>
+        <div class="step-name">Enumerate</div>
+        <div class="step-desc">Discover all assets &amp; schemas</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">Step 2</div>
+        <div class="step-name">Schematize</div>
+        <div class="step-desc">One canonical dataSchema</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">Step 3</div>
+        <div class="step-name">Classify</div>
+        <div class="step-desc">Regex + ML classifiers</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-num">Step 4</div>
+        <div class="step-name">Use</div>
+        <div class="step-desc">Privacy &amp; access actions</div>
+      </div>
+    </div>
+    <ul class="bullets anim" style="margin-top:20px">
+      <li>Each stage is <strong>automated and monitored</strong></li>
+      <li>Classification: <strong>heuristics</strong> (regex for emails, etc.) + <strong>ML classifiers</strong></li>
+      <li>A decade of investment — <strong>millions of assets catalogued daily</strong></li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Meta/565C8DE0-3306-4D28-A947-593E8D8DC3CA_4_5005_c.jpeg" alt="Meta Semantic CI/CD">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 9: META - REAL-TIME -->
+<div class="slide two-col"
+  data-notes="The key innovation: moving from nightly batch classification (days of delay) to real-time semantics powered by CDC. After a table is created, classification now happens in minutes instead of days. Privacy becomes a pipeline property — not a speedbump. This prevents downstream pipeline poisoning. ML access control is applied automatically at classification time. Blog post: engineering.fb.com/2025/04/28/security/how-meta-understands-data-at-scale/">
+  <div class="col-left">
+    <div class="company-badge badge-meta anim">Meta · Key Innovation</div>
+    <h3 class="company anim">From Nightly Batch to Real-Time</h3>
+    <ul class="bullets anim">
+      <li>Powered by <strong>Change Data Capture (CDC)</strong></li>
+      <li>Before: days of delay between table creation and classification</li>
+      <li>After: <strong>classification in minutes</strong></li>
+      <li><strong>Privacy becomes a pipeline property</strong>, not a post-hoc check</li>
+      <li>Prevents <strong>downstream pipeline poisoning</strong> before it starts</li>
+      <li>ML access control applied automatically at classification</li>
+    </ul>
+    <div style="margin-top:20px;padding:12px 16px;background:var(--bg2);
+      border-radius:8px;font-size:13px;color:var(--text2)" class="anim">
+      Full write-up: <strong style="color:var(--accent3)">engineering.fb.com</strong> — "How Meta Understands Data at Scale"
+    </div>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Meta/136DB34B-A044-4B30-8EAC-54853CA2D22D_4_5005_c.jpeg" alt="Meta From Nightly Batch to Real-Time Semantics">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 10: SPOTIFY -->
+<div class="slide two-col"
+  data-notes="Spotify's session was in the AI & ML track (M1). They power personalization for 100M+ users across a massive catalog. The evolution: human-curated playlists → ML prediction models → Generative AI. Key challenge: pre-trained LLMs don't speak 'Spotify' — they have world knowledge but lack catalog-specific intelligence. Solution: ground in catalog, align with behavior, optimize for goals. New features: DJ, Prompt to Playlist, Taste Profile.">
+  <div class="col-left">
+    <div class="company-badge badge-spotify anim">Spotify · AI &amp; ML Stage (M1)</div>
+    <h3 class="company anim">Personalization at 100M+ Users</h3>
+    <p class="lead anim">The evolution of AI-powered recommendations</p>
+    <div class="pipeline anim" style="flex-direction:column;gap:8px">
+      <div class="pipeline-step" style="width:100%;text-align:left;padding:11px 16px;border-color:rgba(30,215,96,.25)">
+        <div class="step-num">Era 1</div>
+        <div class="step-name">Human Curated &nbsp;→&nbsp; Editorial playlists</div>
+      </div>
+      <div class="pipeline-step" style="width:100%;text-align:left;padding:11px 16px;border-color:rgba(30,215,96,.45)">
+        <div class="step-num">Era 2</div>
+        <div class="step-name">Prediction Models &nbsp;→&nbsp; Discover Weekly</div>
+      </div>
+      <div class="pipeline-step" style="width:100%;text-align:left;padding:11px 16px;border-color:rgba(30,215,96,.75)">
+        <div class="step-num">Era 3 (Now)</div>
+        <div class="step-name">Generative AI</div>
+        <div class="step-desc">Spotify DJ · Prompt to Playlist · Taste Profile</div>
+      </div>
+    </div>
+    <ul class="bullets anim" style="margin-top:16px">
+      <li>Challenge: <strong>pre-trained LLMs don't speak "Spotify"</strong></li>
+      <li>Fix: ground in catalog, align with behavior, <strong>optimize for goals</strong></li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Spotify/F2B75B03-8B2F-43BE-A55E-A8A6256986E0_4_5005_c.jpeg" alt="Spotify LLM Challenge">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 11: GOOGLE - AGENTS FOR ALL -->
+<div class="slide two-col"
+  data-notes="Google's Day 2 keynote introduced the Agentic Data Cloud. The central shift: from data as a system of intelligence (reactive dashboards you query) to a system of action (agents that proactively act). Data Agents serve every role: data analysts query and analyze, developers build intelligent apps, data scientists get models that work, ML engineers deploy to impact, business users get insights from objectives.">
+  <div class="col-left">
+    <div class="company-badge badge-google anim">Google Cloud · Day 2 Keynote</div>
+    <h3 class="company anim">The Agentic Data Cloud</h3>
+    <p class="lead anim">From <strong>systems of intelligence</strong> → <strong>systems of action</strong></p>
+    <ul class="bullets anim">
+      <li><strong>Data Agents</strong> empower every role in the data org</li>
+      <li>Moving from <strong>reactive dashboards</strong> to <strong>proactive action</strong></li>
+      <li>Grounding agents in <strong>enterprise semantic knowledge</strong>, not raw data</li>
+      <li>Team transformation: from <strong>solo performer → orchestrator</strong></li>
+      <li>Demo shown: <strong>Agent Catalog</strong> in Google Cloud Console</li>
+      <li>Moving from <strong>human scale</strong> to <strong>agent scale</strong> across clouds</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Google/025ED89B-E19B-4536-A144-3BB974E99ECA_4_5005_c.jpeg" alt="Google Empowering every data role with agents">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 12: GOOGLE - CONVERSATIONAL -->
+<div class="slide two-col"
+  data-notes="Google's conversational agents are Gemini Enterprise integrated across the full data stack. Looker gets natural language BI for business users. BigQuery gets AI analytics for practitioners. Lakehouse gets NL prompts against Delta/Hive data. The promise: any employee can get answers and make decisions instantly without needing SQL or query skills.">
+  <div class="col-left">
+    <div class="company-badge badge-google anim">Google Cloud · Conversational Agents</div>
+    <h3 class="company anim">Natural Language Across the Data Stack</h3>
+    <ul class="bullets anim">
+      <li><strong>Gemini Enterprise</strong> integrated across Google's data tooling</li>
+      <li><strong>Looker</strong>: natural language for BI and dashboards</li>
+      <li><strong>BigQuery</strong>: AI-powered analytics for data practitioners</li>
+      <li><strong>Lakehouse</strong>: NL queries against Delta, Delta, Hive data</li>
+      <li>Full code transparency in conversational DB insights</li>
+      <li>Goal: <strong>any employee gets answers instantly</strong> — no query skills needed</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Google/66657892-72D3-47C4-9F6C-4A4E70E3154A_4_5005_c.jpeg" alt="Google Conversational Agents in Agentic Data Cloud">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 13: GOOGLE - DATA AGENT KIT -->
+<div class="slide two-col"
+  data-notes="Google Cloud Data Agent Kit: turns every IDE, Notebook, and terminal into a native extension of Google's Data Cloud. It provides MCP Tools (Model Context Protocol integration), Skills (portable agentic capabilities), Plugins (ecosystem extensions), and IDE Extensions (VS Code and others). The agentic ecosystem includes Codex, Claude, and Gemini — open choice. Meeting developers where they live.">
+  <div class="col-left">
+    <div class="company-badge badge-google anim">Google Cloud · Developer Tools</div>
+    <h3 class="company anim">Google Cloud Data Agent Kit</h3>
+    <p class="lead anim">Meeting developers where they live — every IDE, every terminal</p>
+    <div class="card-grid anim" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h4>MCP Tools</h4>
+        <p>Model Context Protocol integration with Data Cloud</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h4>Skills</h4>
+        <p>Portable agentic capabilities, any window</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔌</div>
+        <h4>Plugins</h4>
+        <p>Ecosystem extensions for productivity</p>
+      </div>
+      <div class="card">
+        <div class="icon">💻</div>
+        <h4>IDE Extensions</h4>
+        <p>VS Code, JetBrains, any IDE</p>
+      </div>
+    </div>
+    <p class="lead anim" style="margin-top:14px;font-size:14px">
+      Agentic ecosystem: <strong style="color:var(--text)">Codex · Claude · Gemini</strong> — open choice of model
+    </p>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/Google/8FA2C7C7-5551-4738-B852-767E0D1FA832_4_5005_c.jpeg" alt="Google Cloud Data Agent Kit">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 14: FOUR FABRICS -->
+<div class="slide two-col"
+  data-notes="The Ab Initio session (Day 2) framed agentic readiness around four 'fabrics'. Knowledge Fabric = the metadata layer, your enterprise semantic graph. Governance Fabric = rules, policies, lineage, compliance. Compute Fabric = the execution engine, distributed processing. AI Fabric = GenAI-powered data management using SLMs. MCP is called out as a critical component of the AI fabric. Key insight: everything is metadata-driven.">
+  <div class="col-left">
+    <div class="company-badge badge-misc anim">Ab Initio · Day 2 — Agentic Readiness</div>
+    <h3 class="company anim">The Four Fabrics Framework</h3>
+    <p class="lead anim">Is your enterprise ready for an agentic future?</p>
+    <div class="card-grid anim" style="grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+      <div class="card" style="border-color:rgba(99,102,241,.4)">
+        <h4 style="color:#818cf8">Knowledge Fabric</h4>
+        <p>= Metadata fabric. Enterprise semantic layer. The foundation everything runs on.</p>
+      </div>
+      <div class="card" style="border-color:rgba(6,182,212,.4)">
+        <h4 style="color:#22d3ee">Governance Fabric</h4>
+        <p>Rules, policies, lineage, compliance controls across systems.</p>
+      </div>
+      <div class="card" style="border-color:rgba(245,158,11,.4)">
+        <h4 style="color:#fbbf24">Compute Fabric</h4>
+        <p>The execution engine. Distributed high-performance processing.</p>
+      </div>
+      <div class="card" style="border-color:rgba(239,68,68,.4)">
+        <h4 style="color:#f87171">AI Fabric</h4>
+        <p>GenAI-powered data management. <strong style="color:var(--text)">MCP is critical here.</strong></p>
+      </div>
+    </div>
+    <p class="lead anim" style="margin-top:14px;font-size:14px;color:var(--accent3)">
+      Key: <strong>Metadata is derived from data. Everything is metadata-driven.</strong>
+    </p>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/misc/04392415-B535-40D2-895E-454AB6E66D8A_4_5005_c.jpeg" alt="Bring Everything Together - Four Fabrics">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 15: AI READINESS -->
+<div class="slide two-col"
+  data-notes="Maria Wiss shared the most sobering statistic of the conference: only 32% of structured data and 25% of unstructured data is currently AI-ready. Before jumping into AI projects, organizations need: 1) Strict business alignment — be specific about what an agent will do. 2) Solid data foundation — multicloud support, open APIs, governance. 3) The components of the agentic enterprise in place.">
+  <div class="col-left">
+    <div class="company-badge badge-misc anim">Maria Wiss · Day 1 Keynote</div>
+    <h3 class="company anim">How AI-Ready Is Your Data?</h3>
+    <div class="stats anim">
+      <div class="stat-card">
+        <span class="stat-number" style="font-size:48px">32%</span>
+        <span class="stat-label">Structured data<br>that is AI-ready</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" style="font-size:48px">25%</span>
+        <span class="stat-label">Unstructured data<br>that is AI-ready</span>
+      </div>
+    </div>
+    <p class="lead anim" style="margin-top:20px;font-size:16px">3 prerequisites before jumping into AI:</p>
+    <ul class="bullets anim">
+      <li><strong>Business alignment first</strong> — be specific about what an agent will do</li>
+      <li><strong>Solid data foundation</strong> — multicloud, open APIs, governance in place</li>
+      <li><strong>Agentic enterprise components</strong> — orchestration, monitoring, evaluation</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/misc/E9F5DD2E-5B7F-4823-B246-090F3516D135_4_5005_c.jpeg" alt="Solid Data Foundation">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 16: ENTERPRISE CONTEXT -->
+<div class="slide two-col"
+  data-notes="Acceldata presented the concept of a Broad Enterprise Context Window — essentially what you need to give AI agents enough context to be useful in an enterprise setting. Three categories: Data Assets (cloud, on-prem, hybrid; structured, streaming, unstructured), Knowledge Bases (legacy governance, data catalogs, business documents), and Other Artifacts (alerts, tickets). MCP is the connectivity layer that wires these together.">
+  <div class="col-left">
+    <div class="company-badge badge-misc anim">Acceldata · Platform &amp; Architecture (M3)</div>
+    <h3 class="company anim">Enterprise Context Window</h3>
+    <p class="lead anim">What AI agents need to actually be useful</p>
+    <ul class="bullets anim">
+      <li><strong>Data Assets</strong>: Cloud, On-Prem, Hybrid · Structured, Streaming, Unstructured</li>
+      <li><strong>Knowledge Bases</strong>: Legacy governance, data catalogs, business documents</li>
+      <li><strong>Operational Artifacts</strong>: Alerts, tickets, runbooks</li>
+      <li><strong>MCP</strong> (Model Context Protocol) is the connectivity layer that wires everything</li>
+      <li>Without this context, agents hallucinate or miss business-critical constraints</li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/misc/67FDD3AE-BD36-44C4-AC84-34D7C5970B90_4_5005_c.jpeg" alt="Broad Enterprise Context Window">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 17: PANEL - DAY 3 -->
+<div class="slide two-col"
+  data-notes="The Day 3 retail panel was the most grounding session of the conference. Real practitioners from companies like Elgiganten sharing what actually works in the field. The main message: you don't fail because of the technology. You fail because your data is wrong, your people aren't aligned, and your AI use cases aren't specific enough. Fix the data. Choose the right CDP. Involve everyone. Educate constantly.">
+  <div class="col-left">
+    <div class="company-badge badge-misc anim">Day 3 Panel · Retail Track (i3)</div>
+    <h3 class="company anim">What Actually Works in Practice</h3>
+    <ul class="bullets anim">
+      <li><strong>You don't fail because of the technology</strong> — you fail because of data</li>
+      <li>Fix data, be relevant, get <strong>product data correct</strong> first</li>
+      <li>Know which <strong>Customer Data Platform (CDP)</strong> you need — or build your own</li>
+      <li><strong>Choose AI vendors carefully</strong> — set clear rules on who does what</li>
+      <li>People need <strong>data literacy</strong>; tech people need <strong>business literacy</strong></li>
+      <li>Involve <strong>everyone</strong> in experimentation — let them play with AI tools</li>
+      <li>Elgiganten example: personalization through <strong>testing, learning, improving</strong></li>
+    </ul>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/misc/5DA5BB57-332F-4B09-AAA9-565F6371A99A_4_5005_c.jpeg" alt="Collaboration Across AI Agents">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 18: THREE MANTRAS -->
+<div class="slide"
+  data-notes="Three mantras from the Day 3 panel that I'm bringing back. ABT: Always Be Testing — small iterations, fail fast, learn. What you cannot measure doesn't exist — if you're not tracking it, it's not improving. Progression over Perfection — don't wait for perfect data or the perfect model. Ship, observe, iterate. These three apply directly to our data engineering work.">
+  <div class="watermark">DIS 2026</div>
+  <div style="width:100%;max-width:960px">
+    <div class="tag day3 anim">Day 3 Panel · Retail Track</div>
+    <h2 class="slide-title anim">Three Mantras to Take Home</h2>
+    <div class="img-frame anim" style="width:100%;height:260px;margin-bottom:24px">
+      <img src="src/misc/88E70B04-8C9C-4535-A4D7-6081619402CD_4_5005_c.jpeg"
+        alt="ABT - Always Be Testing" style="width:100%;height:260px;object-fit:cover;object-position:center 30%">
+    </div>
+    <div class="stats anim">
+      <div class="stat-card" style="flex:1">
+        <span class="stat-number" style="font-size:26px;-webkit-text-fill-color:#4ade80">ABT</span>
+        <span class="stat-label">Always Be Testing<br>Small iterations · Learn fast</span>
+      </div>
+      <div class="stat-card" style="flex:2">
+        <span class="stat-number" style="font-size:15px;-webkit-text-fill-color:#818cf8;line-height:1.3;padding:8px 0;display:block">
+          "What you cannot<br>measure doesn't exist"
+        </span>
+        <span class="stat-label">Track what matters · Instrument everything</span>
+      </div>
+      <div class="stat-card" style="flex:1">
+        <span class="stat-number" style="font-size:20px;-webkit-text-fill-color:#fbbf24">Progress &gt; Perfection</span>
+        <span class="stat-label">Ship · Learn · Improve<br>Don't wait for perfect</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 19: KEY TAKEAWAYS -->
+<div class="slide"
+  data-notes="Five actionable takeaways for our team. Each maps directly to sessions at DIS 2026. 1: Fix data quality — AI amplifies both good and bad data equally. 2: Invest in metadata now — it's the foundation of every agentic system we saw. 3: Watch MCP — it appeared in every architecture. 4: Right-size models — don't default to frontier. 5: Build data AND business literacy across the team.">
+  <div class="watermark">DIS 2026</div>
+  <div style="width:100%;max-width:900px">
+    <div class="tag tkwy anim">For Our Team</div>
+    <h2 class="slide-title anim" style="font-size:34px;margin-bottom:18px">What This Means for Data Engineers</h2>
+    <div class="tkwy-list anim">
+      <div class="tkwy-item">
+        <div class="tkwy-num">01</div>
+        <div class="tkwy-content">
+          <h4>Fix the data before adding AI</h4>
+          <p>AI amplifies good data and bad data equally. Clean, classified data is the prerequisite — not an afterthought. <em>(Meta, Day 3 Panel)</em></p>
+        </div>
+      </div>
+      <div class="tkwy-item" style="border-color:var(--accent3)">
+        <div class="tkwy-num" style="color:var(--accent3)">02</div>
+        <div class="tkwy-content">
+          <h4>Invest in metadata — it's the foundation of every agentic system</h4>
+          <p>Knowledge fabric = metadata fabric. Cataloging, lineage, and semantic classification are not nice-to-haves. <em>(Ab Initio, Meta)</em></p>
+        </div>
+      </div>
+      <div class="tkwy-item" style="border-color:#10b981">
+        <div class="tkwy-num" style="color:#10b981">03</div>
+        <div class="tkwy-content">
+          <h4>MCP is becoming the integration standard — evaluate it now</h4>
+          <p>Model Context Protocol appeared in every agentic architecture at the summit. Assess it for our stack. <em>(Google, Acceldata, Ab Initio)</em></p>
+        </div>
+      </div>
+      <div class="tkwy-item" style="border-color:#f59e0b">
+        <div class="tkwy-num" style="color:#f59e0b">04</div>
+        <div class="tkwy-content">
+          <h4>Right-size your models — frontier isn't always the answer</h4>
+          <p>Use lightweight open-source models where they're sufficient. Frontier models cost more in tokens and infra. <em>(NVIDIA)</em></p>
+        </div>
+      </div>
+      <div class="tkwy-item" style="border-color:#8b5cf6">
+        <div class="tkwy-num" style="color:#8b5cf6">05</div>
+        <div class="tkwy-content">
+          <h4>Build data literacy — it's now everyone's job</h4>
+          <p>Data engineers need business context. Business users need data literacy. This cultural gap is the real blocker. <em>(Panel)</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 20: THANK YOU -->
+<div class="slide title-slide"
+  data-notes="Thank you! Happy to discuss any session in detail. Full notes from each session are available. The conference overall reinforced that the data engineering fundamentals — quality, lineage, cataloging, observability — matter more than ever in an agentic world.">
+  <div class="watermark">DIS 2026</div>
+  <div style="text-align:center;max-width:860px">
+    <div class="tag keynote anim">Data Innovation Summit 2026 · Stockholm</div>
+    <h1 class="main-title anim" style="font-size:56px">Thank You</h1>
+    <p class="subtitle anim">Questions? Full session notes available on request.</p>
+    <div class="card-grid anim" style="margin-top:36px;grid-template-columns:repeat(3,1fr);gap:14px">
+      <div class="card" style="text-align:center">
+        <div class="icon">🎯</div>
+        <h4>Meta</h4>
+        <p>Semantic CI/CD for privacy-aware data at scale</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">🤖</div>
+        <h4>Google</h4>
+        <p>Agentic Data Cloud · MCP · Data Agent Kit</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">🎵</div>
+        <h4>Spotify</h4>
+        <p>GenAI personalization evolution at 100M+ users</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">⚡</div>
+        <h4>NVIDIA</h4>
+        <p>AI infrastructure reality · NemoClaw blueprint</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">🏗️</div>
+        <h4>Ab Initio</h4>
+        <p>Four Fabrics framework for agentic readiness</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">📊</div>
+        <h4>Panel</h4>
+        <p>ABT · Fix your data · Progression over Perfection</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- #slides -->
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+let cur = 0;
+
+function show(idx) {
+  const prev = slides[cur];
+  prev.classList.remove('active');
+  prev.classList.add('prev');
+  setTimeout(() => prev.classList.remove('prev'), 500);
+  cur = Math.max(0, Math.min(idx, slides.length - 1));
+  slides[cur].classList.add('active');
+  const pct = slides.length > 1 ? (cur / (slides.length - 1)) * 100 : 100;
+  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('counter').textContent = (cur + 1) + ' / ' + slides.length;
+  document.getElementById('snotes').textContent = slides[cur].dataset.notes || '';
+}
+
+// Init
+document.getElementById('counter').textContent = '1 / ' + slides.length;
+document.getElementById('progress').style.width = '0%';
+
+document.getElementById('btn-prev').addEventListener('click', () => show(cur - 1));
+document.getElementById('btn-next').addEventListener('click', () => show(cur + 1));
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+  if (e.key === 'n' || e.key === 'N') document.getElementById('notes-panel').classList.toggle('visible');
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+
+document.getElementById('notes-toggle').addEventListener('click', () => {
+  document.getElementById('notes-panel').classList.toggle('visible');
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (dx < -50) show(cur + 1);
+  if (dx > 50) show(cur - 1);
+});
+</script>
+</body>
+</html>

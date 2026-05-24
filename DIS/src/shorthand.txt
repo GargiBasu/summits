@@ -1,0 +1,145 @@
+DIS
+
+DAY 1: Innovation
+
+Anders: awareness , sferical AI: 1252 GPUs, 158kw per racks, liquid cooling
+
+Maria Wiss: 32% structured data and 25% unstructured data is AI ready
+1. Strict business alignment before you jump in AI. Be specific about what an agent will do.
+2. Solid data foundation: ensure multicloud support, 
+3. Component of the agentic enterprise 
+
+
+Data platform and architecture stage: Codento Google Cloud
+Acceldata says: Data management in this agentic era. Data is the fundamental fabric to your system. Partner of ServiceNow
+Why MCP-DC matters. You need agents to scale
+
+At 11:10
+Data engineering and data ops stage:
+How Meta understands data at scale:
+Enumerate: all about the schema. Discover all the assets and then 
+Schematize: project native schema into one canonical dataSchema from all the different systems. 
+Classify:  
+1. heuristic : like using regex to detect email address 
+2. ML classifiers: 
+
+https://engineering.fb.com/2025/04/28/security/how-meta-understands-data-at-scale/
+
+
+Dora: Resilience, EU AI act’s risk framework 
+Regulations 
+
+
+Spotify: personalization evolution
+Human curated —> prediction —> Generative AI
+New Features:
+Spotify DJ
+Prompt to Playlist 
+Taste Profile
+
+Powered by new models:
+
+
+Riksbanken:
+
+
+SEB:
+
+Encrypt the data and give the cypher text to LLM. 
+
+Performance is the bottleneck. Takes a lot of time. If you have your own GPU and less data and only one use case, then it’s good 
+
+https://www.cesarsotovalero.net/teaser
+
+Closing note:
+
+Agentic AI, openclaw, 
+Why is the explosion happening now: AI is doubling its capability in every 7 months, frontier AI models.
+
+Post training: takes tokens and compute. Then agent to agent talking
+
+Data centers become token generators/AI Factories. 
+
+AI Infrastructure is an eco-system is a 5 layer cake.
+Take a very light weight models ( open source) instead of frontier models if it suits your requirements to save money in the form of tokens.
+Check Nemoclaw
+
+Day 2:
+Keynote:
+Google:
+Create, Manage agents.
+Moving from data to semantic knowledge
+AI native: 
+Gemini enterprise:
+Demo: Agent catalog product in cloud console
+The team is also changing, kind of moving from solo performer to an orchestration 
+
+Redeploy:
+Ownership 
+Isolation: blast radius problem. Isolate the problem.
+Standard: schema mismatch. Same field is bigint in one table and string in another. 
+Solution: use template.
+Schema validation , tag check before insertion.
+Detection:
+Repair run:
+Visibility:
+
+Tag assets, structure job and validation.
+
+
+Is your data enterprise ready for an agentic future: fabrics Governance, compute, AI, Knowledge. MCP is a critical part of AI fabric.
+Knowledge fabric: same as metadata fabric 
+Governance fabrics: 
+Compute fabric: is the engine
+Metadata is derived from the data. 
+
+Everything is metadata driven.
+
+
+ICA:
+Annie talks about the journey. Learning which tools to use is the key.
+
+Träffikverket:
+Analytics is insight, Operations action
+Mobility data space integration
+
+Scania: talking about Stitch from Google
+Google AI Studio
+
+
+Day 3:
+Keynote: 
+Henrik: decision by quorum. 
+
+IBM Bob: connex7 MCP
+WXO Agent Architect
+
+
+Databricks: ai-dev-kit
+Create data branches
+There is a repetition of compute and storage 
+
+Panel discussion:
+You don’t fail because of the technology. 
+Fix the data, be relevant, get the product data correct in order to make AI models work.
+Know which Customer Data Platform(CDP) you want or build your own.
+Choose right AI vendors or partners. Set the rules who is who.
+Educate your people about how are you going to work with AI.
+People need data literacy and tech people need business literacy.
+Should involve all the people to innovate, play with AI tools.
+Elgiganten: personalization
+Testing, learning and improving.
+Look into the reviews
+Fix your data. 
+ABT: always be testing, small iteration
+What you cannot measure doesn’t exist:
+Progression over perfection.
+
+DBT: chat with your data
+
+
+The conference is all about AI adoption.
+
+
+
+
