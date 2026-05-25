@@ -119,6 +119,8 @@ blockquote.big-quote span{color:var(--accent3)}
 .badge-nvidia{background:rgba(118,185,0,.15);color:#86efac;border:1px solid rgba(118,185,0,.3)}
 .badge-spotify{background:rgba(30,215,96,.15);color:#4ade80;border:1px solid rgba(30,215,96,.3)}
 .badge-misc{background:rgba(168,85,247,.15);color:#c084fc;border:1px solid rgba(168,85,247,.3)}
+.badge-siemens{background:rgba(0,153,153,.15);color:#2dd4bf;border:1px solid rgba(0,153,153,.3)}
+.badge-ica{background:rgba(220,38,38,.15);color:#fca5a5;border:1px solid rgba(220,38,38,.3)}
 
 #notes-panel{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.92);
   border-top:1px solid rgba(255,255,255,.1);padding:14px 24px;max-height:150px;
@@ -165,7 +167,7 @@ blockquote.big-quote span{color:var(--accent3)}
     <div class="stats anim" style="justify-content:center;margin-top:36px">
       <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Days</span></div>
       <div class="stat-card"><span class="stat-number">9+</span><span class="stat-label">Tracks</span></div>
-      <div class="stat-card"><span class="stat-number">5</span><span class="stat-label">Companies Deep-Dived</span></div>
+      <div class="stat-card"><span class="stat-number">7</span><span class="stat-label">Companies Deep-Dived</span></div>
       <div class="stat-card"><span class="stat-number">1</span><span class="stat-label">Overarching Theme</span></div>
     </div>
   </div>
@@ -284,7 +286,43 @@ blockquote.big-quote span{color:var(--accent3)}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════ SLIDE 7: META - SCALE PROBLEM -->
+<!-- ═══════════════════════════════════════════════════ SLIDE 7: SIEMENS - INDUSTRIAL AI -->
+<div class="slide"
+  data-notes="Siemens presented on how Industrial AI is reshaping industries end to end. The key argument: AI delivers real value when it is grounded in industrial data and domain expertise. Reliability and precision are non-negotiable in industrial settings. This is different from consumer AI — the stakes are factories, energy grids, and transportation systems. For us as data engineers, the lesson is that domain context matters enormously when deploying AI in any production-critical setting.">
+  <div class="watermark">DIS 2026</div>
+  <div style="width:100%;max-width:1000px">
+    <div class="company-badge badge-siemens anim">Siemens · AI &amp; ML Stage (M1)</div>
+    <h2 class="slide-title anim">Industrial AI: Reshaping Industry End-to-End</h2>
+    <div class="card-grid anim" style="grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px">
+      <div class="card" style="border-color:rgba(0,153,153,.4)">
+        <div class="icon">🏭</div>
+        <h4 style="color:#2dd4bf">Full Industrial Value Chain</h4>
+        <p>AI transforms design, engineering, production, operations, energy and buildings — not just one layer</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,153,153,.4)">
+        <div class="icon">🎯</div>
+        <h4 style="color:#2dd4bf">Business-Critical Value</h4>
+        <p>More competitive, resilient and sustainable operations through AI — speed, flexibility, quality</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,153,153,.4)">
+        <div class="icon">⚙️</div>
+        <h4 style="color:#2dd4bf">Smarter Adaptive Operations</h4>
+        <p>Real-time decision-making · Faster problem-solving · Quality-driven factories</p>
+      </div>
+      <div class="card" style="border-color:rgba(0,153,153,.4)">
+        <div class="icon">🔬</div>
+        <h4 style="color:#2dd4bf">The Right Foundation</h4>
+        <p>Industrial data + domain expertise + AI capabilities + partner ecosystem = real-world impact</p>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:14px 20px;background:var(--bg2);border-radius:10px;
+      border-left:3px solid #2dd4bf;font-size:15px;color:var(--text2)" class="anim">
+      Key lesson: <strong style="color:var(--text)">AI is only as good as the domain data and expertise behind it</strong> — reliability and precision are non-negotiable at industrial scale
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 8: META - SCALE PROBLEM -->
 <div class="slide two-col"
   data-notes="Meta's session was in the DE & DataOps track (M2). The scale problem they face is extreme: hundreds of distinct storage systems (MySQL, TAO, ADLS, Postgres, Kafka, etc.), millions of data assets, billions of columns. No shared schema language. Tickets don't scale. Manual data understanding is fundamentally broken. Their answer: Privacy Aware Infrastructure — an automated, continuous data understanding system.">
   <div class="col-left">
@@ -620,7 +658,34 @@ blockquote.big-quote span{color:var(--accent3)}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════ SLIDE 18: THREE MANTRAS -->
+<!-- ═══════════════════════════════════════════════════ SLIDE 18: ICA - CHANGE JOURNEY -->
+<div class="slide two-col"
+  data-notes="Annie from ICA presented on the Analytics and Decision Intelligence stage, M5. ICA is a 100-year-old Swedish grocery company. Their message: it is not just about the data or the technology — the people side of the change journey is what makes or breaks success. Knowing which tool to use is a skill in itself. People alignment is the actual blocker, not technology. This resonates with the retail panel on day 3 and is directly relevant to us: even the best pipelines fail if teams are not aligned.">
+  <div class="col-left">
+    <div class="company-badge badge-ica anim">ICA · Analytics &amp; Decision Intelligence (M5)</div>
+    <h3 class="company anim">Taking a 100-Year-Old Company Into the Data Future</h3>
+    <p class="lead anim">"It is not just about the data — we need the people on board!"</p>
+    <ul class="bullets anim">
+      <li>A <strong>century of customer knowledge</strong> — but the methods have changed dramatically</li>
+      <li>The real challenge is the <strong>change journey</strong>, not the technology itself</li>
+      <li>Learning <strong>which tool to use when</strong> is a critical skill — not every tool fits every problem</li>
+      <li><strong>People alignment</strong> is the actual barrier to data investment paying off</li>
+      <li>Hands-on methods and <strong>organizational learning</strong> beat top-down mandates</li>
+      <li>You need data literacy <em>and</em> the willingness to <strong>let people experiment</strong></li>
+    </ul>
+    <div style="margin-top:16px;padding:12px 16px;background:var(--bg2);border-radius:8px;
+      border-left:3px solid #fca5a5;font-size:14px;color:var(--text2)" class="anim">
+      Echoed across DIS 2026: <strong style="color:var(--text)">The data is never the bottleneck — the people and the process are.</strong>
+    </div>
+  </div>
+  <div class="col-right" style="padding:28px;align-items:center;justify-content:center">
+    <div class="img-frame anim" style="width:100%;height:88%">
+      <img src="src/ICA/0B3CCDDC-8178-4A50-8C3C-3DD606837D92_1_105_c.jpeg" alt="ICA Data Journey">
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SLIDE 19: THREE MANTRAS -->
 <div class="slide"
   data-notes="Three mantras from the Day 3 panel that I'm bringing back. ABT: Always Be Testing — small iterations, fail fast, learn. What you cannot measure doesn't exist — if you're not tracking it, it's not improving. Progression over Perfection — don't wait for perfect data or the perfect model. Ship, observe, iterate. These three apply directly to our data engineering work.">
   <div class="watermark">DIS 2026</div>
@@ -705,7 +770,7 @@ blockquote.big-quote span{color:var(--accent3)}
     <div class="tag keynote anim">Data Innovation Summit 2026 · Stockholm</div>
     <h1 class="main-title anim" style="font-size:56px">Thank You</h1>
     <p class="subtitle anim">Questions? Full session notes available on request.</p>
-    <div class="card-grid anim" style="margin-top:36px;grid-template-columns:repeat(3,1fr);gap:14px">
+    <div class="card-grid anim" style="margin-top:36px;grid-template-columns:repeat(4,1fr);gap:14px">
       <div class="card" style="text-align:center">
         <div class="icon">🎯</div>
         <h4>Meta</h4>
@@ -730,6 +795,16 @@ blockquote.big-quote span{color:var(--accent3)}
         <div class="icon">🏗️</div>
         <h4>Ab Initio</h4>
         <p>Four Fabrics framework for agentic readiness</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">🏭</div>
+        <h4>Siemens</h4>
+        <p>Industrial AI reshaping the full value chain</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="icon">🛒</div>
+        <h4>ICA</h4>
+        <p>Change journey: people &amp; data literacy first</p>
       </div>
       <div class="card" style="text-align:center">
         <div class="icon">📊</div>
