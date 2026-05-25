@@ -1,0 +1,43 @@
+Slide 1: Welcome. I attended the Data Innovation Summit in Stockholm, May 6–8. Over 3 days I covered sessions on data engineering, AI platforms, and agentic systems. Today I'll walk through the highlights and what they mean for our team.
+
+Slide 2: Days 1 and 2 had parallel sessions in M1–M9 rooms. I focused on DE/DataOps (M2), Platform (M3), and AI/ML (M1). Day 3 switched to industry-specific tracks — I was in the Retail track (i3).
+
+Slide 3: A dialogue between Anders Ynnerman (Executive Chairman, Sferical AI) and Anders Arpteg (VP AI & Data, Saab Group). They discussed the physical reality of AI — the infrastructure constraints that are often ignored in AI hype. 1,252 GPUs. 158kW per rack. Liquid cooling is not optional at this scale. AI is not just a software problem.
+
+Slide 4: This slide from the Day 1 keynote set the tone for everything that followed. Every session at the summit circled back to this idea: AI strategy requires a data strategy, and data strategy requires a business strategy. Without the business layer, the rest is theatre.
+
+Slide 5: Maria Wiss shared the most sobering statistic of the conference: only 32% of structured data and 25% of unstructured data is currently AI-ready. Before jumping into AI projects, organizations need: 1) Strict business alignment — be specific about what an agent will do. 2) Solid data foundation — multicloud support, open APIs, governance. 3) The components of the agentic enterprise in place.
+
+Slide 6: NVIDIA's Day 1 closing keynote. AI capability is doubling every 7 months — faster than Moore's Law ever was. Data centers are evolving into token generators, or AI Factories. The AI infrastructure ecosystem is a 5-layer stack: Energy → Chips → Infrastructure → Models → Applications. Each layer is its own market.
+
+Slide 7: NemoClaw is NVIDIA's open reference architecture for building specialized AI agents. It integrates multi-modal prompts, memory, computer use tools, GPU access, sub-agents running OpenShell, and outputs through Nemotron / Nemo / Dynamo / NIM models. The key design principle: think in orchestration and agent composition, not single LLM calls.
+
+Slide 8: Siemens presented on how Industrial AI is reshaping industries end to end. The key argument: AI delivers real value when it is grounded in industrial data and domain expertise. Reliability and precision are non-negotiable in industrial settings. This is different from consumer AI — the stakes are factories, energy grids, and transportation systems. For us as data engineers, the lesson is that domain context matters enormously when deploying AI in any production-critical setting.
+
+Slide 9: Meta's session was in the DE & DataOps track (M2). The scale problem they face is extreme: hundreds of distinct storage systems (MySQL, TAO, ADLS, Postgres, Kafka, etc.), millions of data assets, billions of columns. No shared schema language. Tickets don't scale. Manual data understanding is fundamentally broken. Their answer: Privacy Aware Infrastructure — an automated, continuous data understanding system.
+
+Slide 10: Meta's mental model: treat data understanding as an automated, idempotent pipeline — exactly like CI/CD for code. Four stages: Enumerate (discover all assets, schemas), Schematize (project native schemas into one canonical dataSchema), Classify (heuristics like regex + ML classifiers), Use (apply privacy actions). This pipeline runs continuously. Each stage is monitored and automated.
+
+Slide 11: The key innovation: moving from nightly batch classification (days of delay) to real-time semantics powered by CDC. After a table is created, classification now happens in minutes instead of days. Privacy becomes a pipeline property — not a speedbump. This prevents downstream pipeline poisoning. ML access control is applied automatically at classification time. Blog post: engineering.fb.com/2025/04/28/security/how-meta-understands-data-at-scale/
+
+Slide 12: Spotify's session was in the AI & ML track (M1). They power personalization for 100M+ users across a massive catalog. The evolution: human-curated playlists → ML prediction models → Generative AI. Key challenge: pre-trained LLMs don't speak 'Spotify' — they have world knowledge but lack catalog-specific intelligence. Solution: ground in catalog, align with behavior, optimize for goals. New features: DJ, Prompt to Playlist, Taste Profile.
+
+Slide 13: Google's Day 2 keynote introduced the Agentic Data Cloud. The central shift: from data as a system of intelligence (reactive dashboards you query) to a system of action (agents that proactively act). Data Agents serve every role: data analysts query and analyze, developers build intelligent apps, data scientists get models that work, ML engineers deploy to impact, business users get insights from objectives.
+
+Slide 14: Google's conversational agents are Gemini Enterprise integrated across the full data stack. Looker gets natural language BI for business users. BigQuery gets AI analytics for practitioners. Lakehouse gets NL prompts against Delta/Hive data. The promise: any employee can get answers and make decisions instantly without needing SQL or query skills.
+
+Slide 15: Google Cloud Data Agent Kit: turns every IDE, Notebook, and terminal into a native extension of Google's Data Cloud. It provides MCP Tools (Model Context Protocol integration), Skills (portable agentic capabilities), Plugins (ecosystem extensions), and IDE Extensions (VS Code and others). The agentic ecosystem includes Codex, Claude, and Gemini — open choice. Meeting developers where they live.
+
+Slide 16: The Ab Initio session (Day 2) framed agentic readiness around four 'fabrics'. Knowledge Fabric = the metadata layer, your enterprise semantic graph. Governance Fabric = rules, policies, lineage, compliance. Compute Fabric = the execution engine, distributed processing. AI Fabric = GenAI-powered data management using SLMs. MCP is called out as a critical component of the AI fabric. Key insight: everything is metadata-driven.
+
+Slide 17: Acceldata presented the concept of a Broad Enterprise Context Window — essentially what you need to give AI agents enough context to be useful in an enterprise setting. Three categories: Data Assets (cloud, on-prem, hybrid; structured, streaming, unstructured), Knowledge Bases (legacy governance, data catalogs, business documents), and Other Artifacts (alerts, tickets). MCP is the connectivity layer that wires these together.
+
+Slide 18: The Day 3 retail panel was the most grounding session of the conference. Real practitioners from companies like Elgiganten sharing what actually works in the field. The main message: you don't fail because of the technology. You fail because your data is wrong, your people aren't aligned, and your AI use cases aren't specific enough. Fix the data. Choose the right CDP. Involve everyone. Educate constantly.
+
+Slide 19: Annie from ICA presented on the Analytics and Decision Intelligence stage, M5. ICA is a 100-year-old Swedish grocery company. Their message: it is not just about the data or the technology — the people side of the change journey is what makes or breaks success. Knowing which tool to use is a skill in itself. People alignment is the actual blocker, not technology. This resonates with the retail panel on day 3 and is directly relevant to us: even the best pipelines fail if teams are not aligned.
+
+Slide 20: Three mantras from the Day 3 panel that I'm bringing back. ABT: Always Be Testing — small iterations, fail fast, learn. What you cannot measure doesn't exist — if you're not tracking it, it's not improving. Progression over Perfection — don't wait for perfect data or the perfect model. Ship, observe, iterate. These three apply directly to our data engineering work.
+
+Slide 21: Five actionable takeaways for our team. Each maps directly to sessions at DIS 2026. 1: Fix data quality — AI amplifies both good and bad data equally. 2: Invest in metadata now — it's the foundation of every agentic system we saw. 3: Watch MCP — it appeared in every architecture. 4: Right-size models — don't default to frontier. 5: Build data AND business literacy across the team.
+
+Slide 22: Thank you! Happy to discuss any session in detail. Full notes from each session are available. The conference overall reinforced that the data engineering fundamentals — quality, lineage, cataloging, observability — matter more than ever in an agentic world.
